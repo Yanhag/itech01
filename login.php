@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=itech', 'root', 'root');
+$pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
  
 if(isset($_GET['login'])) {
     $email = $_POST['email'];
@@ -24,6 +24,7 @@ if(isset($_GET['login'])) {
 <html> 
 <head>
   <title>Login</title>    
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 </head> 
 <body>
  

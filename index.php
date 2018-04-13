@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=itech', 'root', 'root');
+$pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
 ?>
 <!DOCTYPE html> 
 <html> 
