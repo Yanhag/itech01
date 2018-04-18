@@ -60,6 +60,10 @@ if(isset($_GET['register'])) {
     } 
 }
  
+if(isset($_GET['notregistered'])) {
+    header("Location login.php");
+}
+
 if($showFormular) {
 ?>
 <div class="login">
@@ -71,6 +75,12 @@ if($showFormular) {
         <label>Passwort wiederholen:</label>
         <input type="password" size="40" maxlength="250" name="passwort2"><br><br>
         <input type="submit" value="Abschicken">
+    </form>
+    <br>
+    <br>
+    <form action="?notregistered=1" method="post">              
+        <label>Bereits Regestriert?</label>
+        <input type="submit" value="Zum Login">
     </form>
 </div>
  
