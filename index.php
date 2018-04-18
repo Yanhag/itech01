@@ -41,6 +41,8 @@ if(isset($errorMessage)) {
         <input type="password" size="40"  maxlength="250" name="passwort">
         <input type="submit" value="Abschicken">
     </form>
+    <br>
+    <a href="register.php">Noch nicht regestriert</a>
 </div>
 </body>
 </html>

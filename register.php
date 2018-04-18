@@ -6,13 +6,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
 <html> 
 <head>
   <title>Registrierung</title>
-  <link rel="stylesheet" type="text/css" href="css/main.css">  
-  
-  <?php
-  if(isset($_GET['notregistered'])) {
-   ?>   
-   <meta http-equiv="refresh" content="0; URL=login.php"/>
-   <?php
+  <link rel="stylesheet" type="text/css" href="css/main.css"> 
 }
   ?>
   
@@ -82,11 +76,7 @@ if($showFormular) {
         <input type="submit" value="Abschicken">
     </form>
     <br>
-    <br>
-    <form action="?notregistered=1" method="post">              
-        <label>Bereits Regestriert?</label>
-        <input type="submit" value="Zum Login">
-    </form>
+    <a href="index.php">Zum login</a>
 </div>
  
 <?php
