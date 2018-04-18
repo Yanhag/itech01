@@ -7,6 +7,15 @@ $pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
 <head>
   <title>Registrierung</title>
   <link rel="stylesheet" type="text/css" href="css/main.css">  
+  
+  <?php
+  if(isset($_GET['notregistered'])) {
+   ?>   
+   <meta http-equiv="refresh" content="0; URL=login.php"/>
+   <?php
+}
+  ?>
+  
 </head> 
 <body>
  
@@ -60,10 +69,6 @@ if(isset($_GET['register'])) {
     } 
 }
  
-if(isset($_GET['notregistered'])) {
-    header("Location login.php");
-}
-
 if($showFormular) {
 ?>
 <div class="login">
