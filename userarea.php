@@ -5,17 +5,14 @@
   <link rel="stylesheet" type="text/css" href="css/main.css"> 
 </head> 
 <body>
-<select name="usermenu">
-  <option value="Edit">Benutzer Einstellungen</option>
+<select name="usermenu" onchange="location = this.value;">
+  <option value="">Menu</option> 
+  <option value="user_settings.php">Benutzer Einstellungen</option>
   <option value="X">WIP</option>
 </select>
+<br>
+<br>
 
-<?php
-
-
-?>
-</body>
-</html>
 <?php
 session_start();
 if(!isset($_SESSION['userid'])) {
@@ -27,3 +24,6 @@ $userid = $_SESSION['userid'];
  
 echo "Hallo User: ".$userid;
 ?>
+    
+</body>
+</html>
