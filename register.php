@@ -52,7 +52,7 @@ if(isset($_GET['register'])) {
         $statement = $pdo->prepare("INSERT INTO users (anzeigename, email, passwort) VALUES (:anzeigename, :email, :passwort)");
         $result = $statement->execute(array('anzeigename' => $anzeigename, 'email' => $email, 'passwort' => $passwort_hash));
         
-        if($result) {        
+        if($result) {
             echo 'Du wurdest erfolgreich registriert. <a href="index.php">Zum Login</a>';
             $showFormular = false;
         } else {
@@ -76,7 +76,7 @@ if($showFormular) {
         <input type="submit" value="Abschicken">
     </form>
     <br>
-    <a href="index.php">Zum login</a>
+    <a href="index.php">Zum Login</a>
 </div>
  
 <?php

@@ -47,11 +47,11 @@ if(isset($errorMessage)) {
         <label>E-Mail:</label>
         <input type="email" size="40" maxlength="250" name="email">
         <label>Dein Passwort:</label>
-        <input type="password" size="40"  maxlength="250" name="passwort">
+        <input type="password" size="40"  maxlength="250" name="passwort"> <br><br>
         <input type="submit" value="Abschicken">
     </form>
     <br>
-    <a href="register.php">Noch nicht regestriert</a>
+    <a href="register.php">Noch nicht regestriert?</a>
 </div>
 </body>
 </html>
