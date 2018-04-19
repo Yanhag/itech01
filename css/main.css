@@ -29,3 +29,14 @@
 a:hover, a:active {
     background-color: graytext;
 }
+
+select {
+  /* ... */
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  background: url(fff-0-2.png) repeat;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
