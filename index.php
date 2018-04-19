@@ -13,7 +13,7 @@ if(isset($_GET['login'])) {
     //Überprüfung des Passworts
     if ($user !== false && password_verify($passwort, $user['passwort'])) {
         $_SESSION['userid'] = $user['id'];
-        die('Login erfolgreich. Weiter zu <a href="geheim.php">internen Bereich</a>');
+        die('Login erfolgreich. Weiter zu <a href="userarea.php">internen Bereich</a>');
     } else {
         $errorMessage = "E-Mail oder Passwort war ungültig<br>";
     }
@@ -25,6 +25,15 @@ if(isset($_GET['login'])) {
 <head>
   <title>Login</title>    
   <link rel="stylesheet" type="text/css" href="css/main.css">
+  
+  <?php
+    if(isset($_GET['?login=1'])) {
+   ?>   
+   <meta http-equiv="refresh" content="0; URL=userarea.php"/>
+   <?php
+    }
+  ?>
+
 </head> 
 <body>
  

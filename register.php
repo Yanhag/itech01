@@ -7,9 +7,6 @@ $pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
 <head>
   <title>Registrierung</title>
   <link rel="stylesheet" type="text/css" href="css/main.css"> 
-}
-  ?>
-  
 </head> 
 <body>
  
@@ -55,7 +52,7 @@ if(isset($_GET['register'])) {
         $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash));
         
         if($result) {        
-            echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+            echo 'Du wurdest erfolgreich registriert. <a href="index.php">Zum Login</a>';
             $showFormular = false;
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
