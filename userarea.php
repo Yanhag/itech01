@@ -6,7 +6,7 @@
 </head> 
 <body>
 <select name="usermenu" onchange="location = this.value;">
-  <option value="">Menu</option> 
+  <option selected disabled>Menu</option> 
   <option value="user_settings.php">Benutzer Einstellungen</option>
   <option value="X">WIP</option>
 </select>
