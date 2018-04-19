@@ -1,6 +1,19 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
+session_start();
+if(!isset($_SESSION['userid'])) {
+    die('Bitte zuerst <a href="index.php">einloggen</a>');
+}
+ 
+//Abfrage der Nutzer ID vom Login
+$userid = $_SESSION['userid'];
 
+
+$pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
+$sql = "SELECT * FROM users WHERE id = $userid";
+foreach ($pdo->query($sql) as $row) {
+    $anzeigename = $row['anzeigename'];
+    $email = $row['email'];
+}
 ?>
 <!DOCTYPE html> 
 <html> 
@@ -19,9 +32,9 @@ $pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
 <div class="login">
     <form action="?change=1" method="post">
         <label>Anzeigename:</label>
-        <input size="40" maxlength="250" name="anzeigename"/><br>
+        <input size="40" maxlength="250" name="anzeigename" value="<?php echo"$anzeigename"; ?>"/><br>
         <label>E-Mail:</label>
-        <input type="email" size="40" maxlength="250" name="email" value="<?php echo"$email"; ?>"><br><br>
+        <input type="email" size="40" maxlength="250" name="email" value="<?php echo"$email"; ?>"/><br><br>
         <label>Dein Passwort:</label>
         <input type="password" size="40"  maxlength="250" name="passwort"><br>
         <label>Passwort wiederholen:</label>
