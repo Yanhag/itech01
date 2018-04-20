@@ -8,7 +8,6 @@ if(!isset($_SESSION['userid'])) {
  
 //Abfrage der Nutzer ID vom Login
 $userid = $_SESSION['userid'];
-
 $sql = "SELECT * FROM users WHERE id = $userid";
 foreach ($link->query($sql) as $row) {
     $anzeigename = $row['anzeigename'];
