@@ -25,7 +25,7 @@ foreach ($link->query($sql) as $row) {
 require_once("header.php");
 ?>
 <h2>Benutzereinstellungen ändern</h2>
-<div class="name">
+<div class="change">
     <form action="?change=1" method="post">
         <label>Anzeigename:</label>
         <input size="40" maxlength="250" name="anzeigename" value="<?php echo"$anzeigename"; ?>"/><br><br>
