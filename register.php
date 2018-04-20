@@ -1,6 +1,7 @@
 <?php 
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
+require_once("config/config.inc.php");
+$link;
 ?>
 <!DOCTYPE html> 
 <html> 
@@ -35,7 +36,7 @@ if(isset($_GET['register'])) {
     
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) { 
-        $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $statement = $link->prepare("SELECT * FROM users WHERE email = :email");
         $result = $statement->execute(array('email' => $email));
         $user = $statement->fetch();
         
@@ -49,7 +50,7 @@ if(isset($_GET['register'])) {
     if(!$error) {    
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
         
-        $statement = $pdo->prepare("INSERT INTO users (anzeigename, email, passwort) VALUES (:anzeigename, :email, :passwort)");
+        $statement = $link->prepare("INSERT INTO users (anzeigename, email, passwort) VALUES (:anzeigename, :email, :passwort)");
         $result = $statement->execute(array('anzeigename' => $anzeigename, 'email' => $email, 'passwort' => $passwort_hash));
         
         if($result) {

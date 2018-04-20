@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once("config/config.inc.php");
+$link;
 if(!isset($_SESSION['userid'])) {
     die('Bitte zuerst <a href="index.php">einloggen</a>');
 }
@@ -7,10 +9,8 @@ if(!isset($_SESSION['userid'])) {
 //Abfrage der Nutzer ID vom Login
 $userid = $_SESSION['userid'];
 
-
-$pdo = new PDO('mysql:host=localhost;dbname=itech', 'root');
 $sql = "SELECT * FROM users WHERE id = $userid";
-foreach ($pdo->query($sql) as $row) {
+foreach ($link->query($sql) as $row) {
     $anzeigename = $row['anzeigename'];
     $email = $row['email'];
 }
