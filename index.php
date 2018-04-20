@@ -2,22 +2,6 @@
 session_start();
 require_once("config/config.inc.php");
 $link;
-if(isset($_GET['login'])) {
-    $email = $_POST['email'];
-    $passwort = $_POST['passwort'];    
-    $statement = $link->prepare("SELECT * FROM users WHERE email = :email");
-    $result = $statement->execute(array('email' => $email));
-    $user = $statement->fetch();
-        
-    //Überprüfung des Passworts
-    if ($user !== false && password_verify($passwort, $user['passwort'])) {
-        $_SESSION['userid'] = $user['id'];
-        die('Login erfolgreich. Weiter zu <a href="userarea.php">internen Bereich</a>');
-    } else {
-        $errorMessage = "E-Mail oder Passwort war ungültig<br>";
-    }
-    
-}
 ?>
 <!DOCTYPE html> 
 <html> 
@@ -26,11 +10,22 @@ if(isset($_GET['login'])) {
   <link rel="stylesheet" type="text/css" href="css/main.css">
   
   <?php
-    if(isset($_GET['?login=1'])) {
-   ?>   
-   <meta http-equiv="refresh" content="0; URL=userarea.php"/>
-   <?php
-    }
+  if(isset($_GET['login'])) {
+      $email = $_POST['email'];
+      $passwort = $_POST['passwort'];
+      $statement = $link->prepare("SELECT * FROM users WHERE email = :email");
+      $result = $statement->execute(array('email' => $email));
+      $user = $statement->fetch();
+
+      //Überprüfung des Passworts
+      if ($user !== false && password_verify($passwort, $user['passwort'])) {
+          $_SESSION['userid'] = $user['id'];
+          die('Login erfolgreich. <meta http-equiv="refresh" content="2; URL=userarea.php"/>');
+      } else {
+          $errorMessage = "E-Mail oder Passwort war ungültig<br>";
+      }
+
+  }
   ?>
 
 </head> 
