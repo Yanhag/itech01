@@ -28,7 +28,7 @@ function fileupload()
     //Überprüfung der Dateiendung
     $filename = @$_FILES ['picture']['name'];
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
-    if ($extension == 'png') {
+    if ($extension !== 'png') {
         echo "$extension";
         die("Keine Datei ausgewählt oder Datei mit ungültiger Endung. Nur PNG-Dateien sind erlaubt.");
     } else {

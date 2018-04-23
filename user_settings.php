@@ -13,6 +13,32 @@ foreach ($link->query($sql) as $row) {
     $anzeigename = $row['anzeigename'];
     $email = $row['email'];
 }
+
+if(isset($_GET['change'])) {
+    $error = false;
+    $anzeigename = $_POST['anzeigename'];
+    $email = $_POST['email'];
+  
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
+        $error = true;
+    }  
+  
+    //Keine Fehler, wir können den Nutzer registrieren
+    if(!$error) {    
+        
+        $statement = $link->prepare("UPDATE users SET (anzeigename = $anzeigename, email= $email WHERE id = $userid");
+        $result = $statement->execute(array('anzeigename' => $anzeigename, 'email' => $email));
+        
+        if($result) {
+            echo 'Du wurdest erfolgreich registriert. <a href="index.php">Zum Login</a>';
+            $showFormular = false;
+        } else {
+            echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
+        }
+    } 
+}
+
 ?>
 <!DOCTYPE html> 
 <html> 
