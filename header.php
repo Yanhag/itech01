@@ -4,7 +4,6 @@ if(!isset($_SESSION['userid'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +30,7 @@ li a, .dropbtn {
 
 li a:hover, .dropdown:hover .dropbtn {
     background-color: red;
+    color: white;
 }
 
 li.dropdown {
@@ -75,6 +75,7 @@ li.dropdown {
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Benutzer</a>
     <div class="dropdown-content">
+      <a href="profile.php">Profil anzeigen</a>
       <a href="user_settings.php">Benutzerdaten ändern</a>
       <a href="#">Passwort ändern</a>
     </div>

@@ -24,7 +24,6 @@ $link;
       } else {
           $errorMessage = "E-Mail oder Passwort war ungültig<br>";
       }
-
   }
   ?>
 </head> 

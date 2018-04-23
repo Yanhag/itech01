@@ -6,7 +6,7 @@ if(!isset($_SESSION['userid'])) {
     die('Bitte zuerst <a href="index.php">einloggen</a>');
 }
  
-//Abfrage der Nutzer ID vom Login
+//Holen von Benutzerdaten
 $userid = $_SESSION['userid'];
 $sql = "SELECT * FROM users WHERE id = $userid";
 foreach ($link->query($sql) as $row) {
@@ -28,17 +28,15 @@ if(isset($_GET['change'])) {
     if(!$error) {    
         
         $statement = $link->prepare("UPDATE users SET (anzeigename = $anzeigename, email= $email WHERE id = $userid");
-        $result = $statement->execute(array('anzeigename' => $anzeigename, 'email' => $email));
+        $result = $statement->execute(array());
         
         if($result) {
-            echo 'Du wurdest erfolgreich registriert. <a href="index.php">Zum Login</a>';
-            $showFormular = false;
+            echo "Änderungen gesichert";
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
         }
     } 
 }
-
 ?>
 <!DOCTYPE html> 
 <html> 
@@ -51,7 +49,7 @@ if(isset($_GET['change'])) {
 require_once("header.php");
 ?>
 <h2>Benutzereinstellungen ändern</h2>
-<div class="change">
+<div class="linkbutton">
     <form action="?change=1" method="post">
         <label>Anzeigename:</label>
         <input size="40" maxlength="250" name="anzeigename" value="<?php echo"$anzeigename"; ?>"/><br><br>
@@ -59,3 +57,4 @@ require_once("header.php");
         <input type="email" size="40" maxlength="250" name="email" value="<?php echo"$email"; ?>"/><br><br>
         <input type="submit" value="Ändern">
     </form>
+</div>
