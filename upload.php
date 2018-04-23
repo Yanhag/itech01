@@ -12,7 +12,7 @@ if(isset($_GET['upload'])) {
 }
 
 ?>
-<form action="upload.php?page=upload" method="post" enctype="multipart/form-data">
+<form action="?upload=1" method="post" enctype="multipart/form-data">
     <fieldset>
         <h4>Bild Auswählen:</h4>
         <input type="file" name="picture"> <br><br>
@@ -28,11 +28,11 @@ function fileupload()
     //Überprüfung der Dateiendung
     $filename = @$_FILES ['picture']['name'];
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
-    if ($extension !== 'png') {
+    if ($extension == 'png') {
+        echo "$extension";
         die("Keine Datei ausgewählt oder Datei mit ungültiger Endung. Nur PNG-Dateien sind erlaubt.");
     } else {
         echo "Hochladen erfolgreich. <br><br>";
-
         move_uploaded_file(
             $_FILES['picture']['tmp_name'],
             'upload/' . $_FILES['picture']['name']);
