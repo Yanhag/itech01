@@ -28,12 +28,12 @@ function fileupload()
     //Überprüfung der Dateiendung
     $filename = @$_FILES ['picture']['name'];
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
-    if ($extension == ('png' XOR 'PNG' XOR 'jpg')) {
-        echo "Hochladen erfolgreich. <br><br>";
+    if ($extension == ('png' OR 'PNG' OR 'jpg')) {
+      echo "Hochladen erfolgreich. <br><br>";
         move_uploaded_file(
             $_FILES['picture']['tmp_name'],
             'upload/' . $_FILES['picture']['name']);
     } else {
-        die("Keine Datei ausgewählt oder Datei mit ungültiger Endung. Nur PNG/JPG-Dateien sind erlaubt.");
+    die("Keine Datei ausgewählt oder Datei mit ungültiger Endung. Nur PNG/JPG-Dateien sind erlaubt."); 
     }
 }
